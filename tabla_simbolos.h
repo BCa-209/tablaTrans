@@ -5,14 +5,15 @@
 #include <iostream>
 #include <string>
 #include <list>
+using namespace std;
 
 class Atributos{
     public:
-        std::string lexema;
+        string lexema;
         int token;
-        std::string tipo;
-        std::string valor;
-        std::string estado;
+        string tipo;
+        string valor;
+        string estado;
         
         Atributos(){
             lexema="";
@@ -22,7 +23,7 @@ class Atributos{
             estado="";
         }
         
-        Atributos(std::string lex,int tok,std::string tip,std::string val,std::string est){
+        Atributos(string lex,int tok,string tip,string val,string est){
             lexema=lex;
             token=tok;
             tipo=tip;
@@ -31,25 +32,25 @@ class Atributos{
         }
         
         void Mostrar(){
-            std::cout<<"Tipo("<<tipo<<") \t";
-            std::cout<<"Lexema("<<lexema<<") \t";
-            std::cout<<"Token("<<token<<") \t";
-            std::cout<<"Valor("<<valor<<") \t";
-            std::cout<<"Estado("<<estado<<")"<<std::endl;
+            cout<<"Tipo("<<tipo<<") \t";
+            cout<<"Lexema("<<lexema<<") \t";
+            cout<<"Token("<<token<<") \t";
+            cout<<"Valor("<<valor<<") \t";
+            cout<<"Estado("<<estado<<")"<<endl;
         }
 };
 
 class TablaSimbolos{
     private:
-        std::list<Atributos> tabla;
+        list<Atributos> tabla;
         
     public:
-        void Insertar(std::string lex,int tok,std::string tip,std::string val,std::string est){
+        void Insertar(string lex,int tok,string tip,string val,string est){
             Atributos attr(lex,tok,tip,val,est);
             tabla.push_back(attr);
         }
         
-        bool ActualizarValor(std::string lex,std::string val){
+        bool ActualizarValor(string lex,string val){
             for (auto &item:tabla){
                 if(item.lexema == lex){
                     item.valor = val;
@@ -59,7 +60,7 @@ class TablaSimbolos{
             return false;
         }
         
-        bool ActualizarTipo(std::string lex,std::string tipo){
+        bool ActualizarTipo(string lex,string tipo){
             for (auto &item:tabla){
                 if(item.lexema == lex){
                     item.tipo = tipo;
@@ -69,7 +70,7 @@ class TablaSimbolos{
             return false;
         }
         
-        bool ActualizarEstado(std::string lex,std::string est){
+        bool ActualizarEstado(string lex,string est){
             for (auto &item:tabla){
                 if(item.lexema == lex){
                     item.estado = est;
@@ -85,7 +86,7 @@ class TablaSimbolos{
             }
         }
         
-        bool Buscar(std::string lex,Atributos& attr){
+        bool Buscar(string lex,Atributos& attr){
             for (auto item:tabla){
                 if(item.lexema == lex){
                     attr=item;
@@ -95,7 +96,7 @@ class TablaSimbolos{
             return false;
         }
         
-        bool BuscarPClave(std::string lex,Atributos& attr){
+        bool BuscarPClave(string lex,Atributos& attr){
             for (auto item:tabla){
                 if(item.lexema == lex && item.tipo == "pclave"){
                     attr=item;
@@ -105,33 +106,55 @@ class TablaSimbolos{
             return false;
         }
         
-        std::list<Atributos> getTabla(){
+        list<Atributos> getTabla(){
             return tabla;
         }
         
-        void InicializarPalabrasClave(){
-            Insertar("estadisticas",ESTADISTICAS,"pclave",vacio,vacio);
-            Insertar("(",APARENTESIS,"pclave",vacio,vacio);
-            Insertar(")",CPARENTESIS,"pclave",vacio,vacio);
-            Insertar("{",ALLAVE,"pclave",vacio,vacio);
-            Insertar("}",CLLAVE,"pclave",vacio,vacio);
-            Insertar("=",IGUAL,"pclave",vacio,vacio);
-            Insertar(";",PCOMA,"pclave",vacio,vacio);
-            Insertar(".",PUNTO,"pclave",vacio,vacio);
-            Insertar("promedio",PROMEDIO,"pclave",vacio,vacio);
-            Insertar("desviacionest",DESVIACIONEST,"pclave",vacio,vacio);
-            Insertar("varianza",VARIANZA,"pclave",vacio,vacio);
-            Insertar("frecuencia",FRECUENCIA,"pclave",vacio,vacio);
-            Insertar(",",COMA,"pclave",vacio,vacio);
-            Insertar("datomayor",DATOMAYOR,"pclave",vacio,vacio);
-            Insertar("datomenor",DATOMENOR,"pclave",vacio,vacio);
-            Insertar("media",MEDIA,"pclave",vacio,vacio);
-            Insertar("moda",MODA,"pclave",vacio,vacio);
-            Insertar("rango",RANGO,"pclave",vacio,vacio);
-            Insertar("sesgo",SESGO,"pclave",vacio,vacio);
-            Insertar("curtosis",CURTOSIS,"pclave",vacio,vacio);
-            Insertar("leer",LEER,"pclave",vacio,vacio);
-        }
+    void InicializarPalabrasClave(){
+    // Palabras reservadas principales
+        Insertar("algoritmo", ALGORITMO, "pclave", vacio, vacio);
+        Insertar("configuracion", CONFIGURACION, "pclave", vacio, vacio);
+        Insertar("Configuracion", CONFIGURACION, "pclave", vacio, vacio);
+        Insertar("circuito", CIRCUITO, "pclave", vacio, vacio);
+        Insertar("Circuito", CIRCUITO, "pclave", vacio, vacio);
+        Insertar("fin", FIN, "pclave", vacio, vacio);
+        Insertar("numpin", NUMPIN, "pclave", vacio, vacio);
+        Insertar("decimal", DECIMAL, "pclave", vacio, vacio);
+        Insertar("numero", NUMERO, "pclave", vacio, vacio);
+        Insertar("salida", SALIDA, "pclave", vacio, vacio);
+        
+        // Funciones
+        Insertar("configurar", CONFIGURAR, "pclave", vacio, vacio);
+        Insertar("configurar_pin", CONFIGURAR_PIN, "pclave", vacio, vacio);
+        Insertar("encender", ENCENDER, "pclave", vacio, vacio);
+        Insertar("apagar", APAGAR, "pclave", vacio, vacio);
+        Insertar("esperar", ESPERAR, "pclave", vacio, vacio);
+        Insertar("leer_sensor", LEER_SENSOR, "pclave", vacio, vacio);
+        Insertar("intensidad", INTENSIDAD, "pclave", vacio, vacio);
+        
+        // Estructuras de control
+        Insertar("repetir", REPETIR, "pclave", vacio, vacio);
+        Insertar("veces", VECES, "pclave", vacio, vacio);
+        Insertar("si", SI, "pclave", vacio, vacio);
+        Insertar("sino", SINO, "pclave", vacio, vacio);
+        
+        // Delimitadores y operadores
+        Insertar("=", IGUAL, "pclave", vacio, vacio);
+        Insertar(";", PCOMA, "pclave", vacio, vacio);
+        Insertar(",", COMA, "pclave", vacio, vacio);
+        Insertar("(", APARENTESIS, "pclave", vacio, vacio);
+        Insertar(")", CPARENTESIS, "pclave", vacio, vacio);
+        Insertar(":", DOSPUNTOS, "pclave", vacio, vacio);
+        Insertar(">", MAYOR, "pclave", vacio, vacio);
+        Insertar("<", MENOR, "pclave", vacio, vacio);
+        Insertar("+", MAS, "pclave", vacio, vacio);
+        Insertar("-", MENOS, "pclave", vacio, vacio);
+        Insertar("*", POR, "pclave", vacio, vacio);
+        Insertar("/", DIVIDIDO, "pclave", vacio, vacio);
+        
+        // Encabezado de algoritmo
+        Insertar("##", ALGORITMO, "pclave", vacio, vacio);
+    }
 };
 
 #endif
