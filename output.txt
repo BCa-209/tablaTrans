@@ -1,0 +1,171 @@
+=== ANALIZADOR DE LENGUAJE PARA SISTEMAS EMBEBIDOS ===
+Archivo de ejemplos cargado exitosamente
+Contenido cargado (454 caracteres)
+
+Iniciando analisis lexico...
+=== ANALISIS LEXICO ===
+Token reconocido: 1
+Token reconocido: 24
+Token reconocido: 4
+Variable reconocida: led_rojo
+Token reconocido: 19
+Numero reconocido: 13
+Token reconocido: 20
+Token reconocido: 4
+Variable reconocida: led_amarillo
+Token reconocido: 19
+Numero reconocido: 12
+Token reconocido: 20
+Token reconocido: 4
+Variable reconocida: led_verde
+Token reconocido: 19
+Numero reconocido: 11
+Token reconocido: 20
+Token reconocido: 8
+Token reconocido: 22
+Numero reconocido: 13
+Token reconocido: 21
+Token reconocido: 7
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 8
+Token reconocido: 22
+Numero reconocido: 12
+Token reconocido: 21
+Token reconocido: 7
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 8
+Token reconocido: 22
+Numero reconocido: 11
+Token reconocido: 21
+Token reconocido: 7
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 3
+Token reconocido: 2
+Token reconocido: 24
+Token reconocido: 9
+Token reconocido: 22
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 11
+Token reconocido: 22
+Numero reconocido: 5000
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 10
+Token reconocido: 22
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 9
+Token reconocido: 22
+Numero reconocido: 12
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 11
+Token reconocido: 22
+Numero reconocido: 2000
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 10
+Token reconocido: 22
+Numero reconocido: 12
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 9
+Token reconocido: 22
+Numero reconocido: 13
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 11
+Token reconocido: 22
+Numero reconocido: 5000
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 10
+Token reconocido: 22
+Numero reconocido: 13
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 9
+Token reconocido: 22
+Numero reconocido: 12
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 11
+Token reconocido: 22
+Numero reconocido: 1000
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 10
+Token reconocido: 22
+Numero reconocido: 12
+Token reconocido: 23
+Token reconocido: 20
+Token reconocido: 3
+Fin del archivo alcanzado
+
+Analisis Lexico: EXITOSO
+
+=== TABLA DE SIMBOLOS ===
+Tipo(pclave)    Lexema(algoritmo)       Token(0)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(configuracion)   Token(1)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(Configuracion)   Token(1)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(circuito)        Token(2)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(Circuito)        Token(2)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(fin)     Token(3)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(numpin)  Token(4)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(decimal)         Token(5)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(numero)  Token(6)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(salida)  Token(7)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(configurar)      Token(8)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(configurar_pin)  Token(18)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(encender)        Token(9)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(apagar)  Token(10)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(esperar)         Token(11)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(leer_sensor)     Token(16)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(intensidad)      Token(17)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(repetir)         Token(12)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(veces)   Token(13)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(si)      Token(14)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(sino)    Token(15)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(=)       Token(19)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(;)       Token(20)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(,)       Token(21)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(()       Token(22)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema())       Token(23)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(:)       Token(24)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(>)       Token(25)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(<)       Token(26)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(+)       Token(27)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(-)       Token(28)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(*)       Token(29)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(/)       Token(30)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(##)      Token(0)        Valor(-)        Estado(-)
+Tipo(variable)  Lexema(led_rojo)        Token(31)       Valor(NULL)     Estado(NULL)
+Tipo(variable)  Lexema(led_amarillo)    Token(31)       Valor(NULL)     Estado(NULL)
+Tipo(variable)  Lexema(led_verde)       Token(31)       Valor(NULL)     Estado(NULL)
+
+=== ANALISIS SINTACTICO ===
+Token: 1
+Transicion desde estado 0 con token 1
+Token: 24
+Transicion desde estado 2 con token 24
+Token: 4
+Transicion desde estado 3 con token 4
+Token: 31 (VAR: led_rojo)
+Transicion desde estado 4 con token 31
+Token: 19
+Transicion desde estado 5 con token 19
+Token: 32 (NUM: 13)
+Transicion desde estado 7 con token 32
+Token: 20
+Transicion desde estado 3 con token 20
+ERROR: No hay transicion desde estado 3 con token 20
+Error 400: Error de sintaxis en posicion -1
+Error en transicion desde estado 3 con token 20
+
+Analisis Sintactico: FALLIDO
+
+Presione una tecla para continuar . . .
