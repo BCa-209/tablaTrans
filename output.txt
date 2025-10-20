@@ -1,109 +1,146 @@
 === ANALIZADOR DE LENGUAJE PARA SISTEMAS EMBEBIDOS ===
-Archivo de ejemplos cargado exitosamente
-Contenido cargado (454 caracteres)
+Archivo: semaforo.emb
+Archivo 'semaforo.emb' cargado exitosamente
+Contenido cargado (476 caracteres)
+
+=== CONTENIDO DEL ARCHIVO ===
+##algoritmo semaforo
+configuracion:
+    numpin led_rojo = 13;
+    numpin led_amarillo = 12;
+    numpin led_verde = 11;
+    
+    configurar (13, salida);
+    configurar (12, salida);
+    configurar (11, salida);
+fin
+
+circuito:
+
+    encender(led_rojo);
+    esperar(5000);
+    apagar(led_verde);
+
+    encender(12);
+    esperar(2000);
+    apagar(12);
+
+    encender(13);
+    esperar(5000);
+    apagar(13);
+
+    encender(12);
+    esperar(1000);
+    apagar(12);
+fin
+
+===============================
 
 Iniciando analisis lexico...
 === ANALISIS LEXICO ===
-Token reconocido: 1
-Token reconocido: 24
-Token reconocido: 4
+Comentario reconocido y omitido
+Token reconocido: 1 (configuracion)
+Token reconocido: 24 (:)
+Token reconocido: 4 (numpin)
 Variable reconocida: led_rojo
-Token reconocido: 19
+Token reconocido: 19 (=)
 Numero reconocido: 13
-Token reconocido: 20
-Token reconocido: 4
+Token reconocido: 20 (;)
+Token reconocido: 4 (numpin)
 Variable reconocida: led_amarillo
-Token reconocido: 19
+Token reconocido: 19 (=)
 Numero reconocido: 12
-Token reconocido: 20
-Token reconocido: 4
+Token reconocido: 20 (;)
+Token reconocido: 4 (numpin)
 Variable reconocida: led_verde
-Token reconocido: 19
+Token reconocido: 19 (=)
 Numero reconocido: 11
-Token reconocido: 20
-Token reconocido: 8
-Token reconocido: 22
+Token reconocido: 20 (;)
+Token reconocido: 8 (configurar)
+Token reconocido: 22 (()
 Numero reconocido: 13
-Token reconocido: 21
-Token reconocido: 7
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 8
-Token reconocido: 22
+Token reconocido: 21 (,)
+Token reconocido: 7 (salida)
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 8 (configurar)
+Token reconocido: 22 (()
 Numero reconocido: 12
-Token reconocido: 21
-Token reconocido: 7
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 8
-Token reconocido: 22
+Token reconocido: 21 (,)
+Token reconocido: 7 (salida)
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 8 (configurar)
+Token reconocido: 22 (()
 Numero reconocido: 11
-Token reconocido: 21
-Token reconocido: 7
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 3
-Token reconocido: 2
-Token reconocido: 24
-Token reconocido: 9
-Token reconocido: 22
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 11
-Token reconocido: 22
+Token reconocido: 21 (,)
+Token reconocido: 7 (salida)
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 3 (fin)
+Token reconocido: 2 (circuito)
+Token reconocido: 24 (:)
+Token reconocido: 9 (encender)
+Token reconocido: 22 (()
+Palabra clave reconocida: led_rojo
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 11 (esperar)
+Token reconocido: 22 (()
 Numero reconocido: 5000
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 10
-Token reconocido: 22
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 9
-Token reconocido: 22
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 10 (apagar)
+Token reconocido: 22 (()
+Palabra clave reconocida: led_verde
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 9 (encender)
+Token reconocido: 22 (()
 Numero reconocido: 12
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 11
-Token reconocido: 22
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 11 (esperar)
+Token reconocido: 22 (()
 Numero reconocido: 2000
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 10
-Token reconocido: 22
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 10 (apagar)
+Token reconocido: 22 (()
 Numero reconocido: 12
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 9
-Token reconocido: 22
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 9 (encender)
+Token reconocido: 22 (()
 Numero reconocido: 13
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 11
-Token reconocido: 22
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 11 (esperar)
+Token reconocido: 22 (()
 Numero reconocido: 5000
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 10
-Token reconocido: 22
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 10 (apagar)
+Token reconocido: 22 (()
 Numero reconocido: 13
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 9
-Token reconocido: 22
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 9 (encender)
+Token reconocido: 22 (()
 Numero reconocido: 12
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 11
-Token reconocido: 22
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 11 (esperar)
+Token reconocido: 22 (()
 Numero reconocido: 1000
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 10
-Token reconocido: 22
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 10 (apagar)
+Token reconocido: 22 (()
 Numero reconocido: 12
-Token reconocido: 23
-Token reconocido: 20
-Token reconocido: 3
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 3 (fin)
 Fin del archivo alcanzado
 
 Analisis Lexico: EXITOSO
@@ -147,25 +184,322 @@ Tipo(variable)  Lexema(led_rojo)        Token(31)       Valor(NULL)     Estado(N
 Tipo(variable)  Lexema(led_amarillo)    Token(31)       Valor(NULL)     Estado(NULL)
 Tipo(variable)  Lexema(led_verde)       Token(31)       Valor(NULL)     Estado(NULL)
 
+Iniciando analisis sintactico...
+
 === ANALISIS SINTACTICO ===
-Token: 1
+Token #1: 34 (COMENTARIO)
+Transicion desde estado 0 con token 34
+Nuevo estado: 0
+Token #2: 1
 Transicion desde estado 0 con token 1
-Token: 24
-Transicion desde estado 2 con token 24
-Token: 4
-Transicion desde estado 3 con token 4
-Token: 31 (VAR: led_rojo)
-Transicion desde estado 4 con token 31
-Token: 19
-Transicion desde estado 5 con token 19
-Token: 32 (NUM: 13)
-Transicion desde estado 7 con token 32
-Token: 20
-Transicion desde estado 3 con token 20
-ERROR: No hay transicion desde estado 3 con token 20
-Error 400: Error de sintaxis en posicion -1
-Error en transicion desde estado 3 con token 20
+Nuevo estado: 1
+Token #3: 24
+Transicion desde estado 1 con token 24
+Nuevo estado: 2
+Token #4: 4
+Transicion desde estado 2 con token 4
+Nuevo estado: 3
+Token #5: 31 (VAR: led_rojo)
+Transicion desde estado 3 con token 31
+Nuevo estado: 4
+Token #6: 19
+Transicion desde estado 4 con token 19
+Nuevo estado: 5
+Token #7: 32 (NUM: 13)
+Transicion desde estado 5 con token 32
+Nuevo estado: 6
+Token #8: 20
+Transicion desde estado 6 con token 20
+Nuevo estado: 2
+Token #9: 4
+Transicion desde estado 2 con token 4
+Nuevo estado: 3
+Token #10: 31 (VAR: led_amarillo)
+Transicion desde estado 3 con token 31
+Nuevo estado: 4
+Token #11: 19
+Transicion desde estado 4 con token 19
+Nuevo estado: 5
+Token #12: 32 (NUM: 12)
+Transicion desde estado 5 con token 32
+Nuevo estado: 6
+Token #13: 20
+Transicion desde estado 6 con token 20
+Nuevo estado: 2
+Token #14: 4
+Transicion desde estado 2 con token 4
+Nuevo estado: 3
+Token #15: 31 (VAR: led_verde)
+Transicion desde estado 3 con token 31
+Nuevo estado: 4
+Token #16: 19
+Transicion desde estado 4 con token 19
+Nuevo estado: 5
+Token #17: 32 (NUM: 11)
+Transicion desde estado 5 con token 32
+Nuevo estado: 6
+Token #18: 20
+Transicion desde estado 6 con token 20
+Nuevo estado: 2
+Token #19: 8
+Transicion desde estado 2 con token 8
+Nuevo estado: 7
+Token #20: 22
+Transicion desde estado 7 con token 22
+Nuevo estado: 8
+Token #21: 32 (NUM: 13)
+Transicion desde estado 8 con token 32
+Nuevo estado: 9
+Token #22: 21
+Transicion desde estado 9 con token 21
+Nuevo estado: 11
+Token #23: 7
+Transicion desde estado 11 con token 7
+Nuevo estado: 12
+Token #24: 23
+Transicion desde estado 12 con token 23
+Nuevo estado: 13
+Token #25: 20
+Transicion desde estado 13 con token 20
+Nuevo estado: 2
+Token #26: 8
+Transicion desde estado 2 con token 8
+Nuevo estado: 7
+Token #27: 22
+Transicion desde estado 7 con token 22
+Nuevo estado: 8
+Token #28: 32 (NUM: 12)
+Transicion desde estado 8 con token 32
+Nuevo estado: 9
+Token #29: 21
+Transicion desde estado 9 con token 21
+Nuevo estado: 11
+Token #30: 7
+Transicion desde estado 11 con token 7
+Nuevo estado: 12
+Token #31: 23
+Transicion desde estado 12 con token 23
+Nuevo estado: 13
+Token #32: 20
+Transicion desde estado 13 con token 20
+Nuevo estado: 2
+Token #33: 8
+Transicion desde estado 2 con token 8
+Nuevo estado: 7
+Token #34: 22
+Transicion desde estado 7 con token 22
+Nuevo estado: 8
+Token #35: 32 (NUM: 11)
+Transicion desde estado 8 con token 32
+Nuevo estado: 9
+Token #36: 21
+Transicion desde estado 9 con token 21
+Nuevo estado: 11
+Token #37: 7
+Transicion desde estado 11 con token 7
+Nuevo estado: 12
+Token #38: 23
+Transicion desde estado 12 con token 23
+Nuevo estado: 13
+Token #39: 20
+Transicion desde estado 13 con token 20
+Nuevo estado: 2
+Token #40: 3
+Transicion desde estado 2 con token 3
+Nuevo estado: 10
+Token #41: 2
+Transicion desde estado 10 con token 2
+Nuevo estado: 14
+Token #42: 24
+Transicion desde estado 14 con token 24
+Nuevo estado: 15
+Token #43: 9
+Transicion desde estado 15 con token 9
+Nuevo estado: 16
+Token #44: 22
+Transicion desde estado 16 con token 22
+Nuevo estado: 17
+Token #45: 31 (VAR: led_rojo)
+Transicion desde estado 17 con token 31
+Nuevo estado: 18
+Token #46: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #47: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #48: 11
+Transicion desde estado 15 con token 11
+Nuevo estado: 19
+Token #49: 22
+Transicion desde estado 19 con token 22
+Nuevo estado: 21
+Token #50: 32 (NUM: 5000)
+Transicion desde estado 21 con token 32
+Nuevo estado: 18
+Token #51: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #52: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #53: 10
+Transicion desde estado 15 con token 10
+Nuevo estado: 16
+Token #54: 22
+Transicion desde estado 16 con token 22
+Nuevo estado: 17
+Token #55: 31 (VAR: led_verde)
+Transicion desde estado 17 con token 31
+Nuevo estado: 18
+Token #56: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #57: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #58: 9
+Transicion desde estado 15 con token 9
+Nuevo estado: 16
+Token #59: 22
+Transicion desde estado 16 con token 22
+Nuevo estado: 17
+Token #60: 32 (NUM: 12)
+Transicion desde estado 17 con token 32
+Nuevo estado: 18
+Token #61: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #62: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #63: 11
+Transicion desde estado 15 con token 11
+Nuevo estado: 19
+Token #64: 22
+Transicion desde estado 19 con token 22
+Nuevo estado: 21
+Token #65: 32 (NUM: 2000)
+Transicion desde estado 21 con token 32
+Nuevo estado: 18
+Token #66: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #67: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #68: 10
+Transicion desde estado 15 con token 10
+Nuevo estado: 16
+Token #69: 22
+Transicion desde estado 16 con token 22
+Nuevo estado: 17
+Token #70: 32 (NUM: 12)
+Transicion desde estado 17 con token 32
+Nuevo estado: 18
+Token #71: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #72: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #73: 9
+Transicion desde estado 15 con token 9
+Nuevo estado: 16
+Token #74: 22
+Transicion desde estado 16 con token 22
+Nuevo estado: 17
+Token #75: 32 (NUM: 13)
+Transicion desde estado 17 con token 32
+Nuevo estado: 18
+Token #76: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #77: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #78: 11
+Transicion desde estado 15 con token 11
+Nuevo estado: 19
+Token #79: 22
+Transicion desde estado 19 con token 22
+Nuevo estado: 21
+Token #80: 32 (NUM: 5000)
+Transicion desde estado 21 con token 32
+Nuevo estado: 18
+Token #81: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #82: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #83: 10
+Transicion desde estado 15 con token 10
+Nuevo estado: 16
+Token #84: 22
+Transicion desde estado 16 con token 22
+Nuevo estado: 17
+Token #85: 32 (NUM: 13)
+Transicion desde estado 17 con token 32
+Nuevo estado: 18
+Token #86: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #87: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #88: 9
+Transicion desde estado 15 con token 9
+Nuevo estado: 16
+Token #89: 22
+Transicion desde estado 16 con token 22
+Nuevo estado: 17
+Token #90: 32 (NUM: 12)
+Transicion desde estado 17 con token 32
+Nuevo estado: 18
+Token #91: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #92: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #93: 11
+Transicion desde estado 15 con token 11
+Nuevo estado: 19
+Token #94: 22
+Transicion desde estado 19 con token 22
+Nuevo estado: 21
+Token #95: 32 (NUM: 1000)
+Transicion desde estado 21 con token 32
+Nuevo estado: 18
+Token #96: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #97: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #98: 10
+Transicion desde estado 15 con token 10
+Nuevo estado: 16
+Token #99: 22
+Transicion desde estado 16 con token 22
+Nuevo estado: 17
+Token #100: 32 (NUM: 12)
+Transicion desde estado 17 con token 32
+Nuevo estado: 18
+Token #101: 23
+Transicion desde estado 18 con token 23
+Nuevo estado: 20
+Token #102: 20
+Transicion desde estado 20 con token 20
+Nuevo estado: 15
+Token #103: 3
+Transicion desde estado 15 con token 3
+Nuevo estado: 22
+Fin de archivo alcanzado
+=== ANALISIS SINTACTICO EXITOSO ===
+Estado final: 22
 
-Analisis Sintactico: FALLIDO
+Analisis Sintactico: EXITOSO
 
-Presione una tecla para continuar . . .
+Presione una tecla para continuar . . . 
