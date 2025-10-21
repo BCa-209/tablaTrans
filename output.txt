@@ -146,7 +146,6 @@ Fin del archivo alcanzado
 Analisis Lexico: EXITOSO
 
 === TABLA DE SIMBOLOS ===
-Tipo(pclave)    Lexema(algoritmo)       Token(0)        Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(configuracion)   Token(1)        Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(Configuracion)   Token(1)        Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(circuito)        Token(2)        Valor(-)        Estado(-)
@@ -163,10 +162,10 @@ Tipo(pclave)    Lexema(apagar)  Token(10)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(esperar)         Token(11)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(leer_sensor)     Token(16)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(intensidad)      Token(17)       Valor(-)        Estado(-)
-Tipo(pclave)    Lexema(repetir)         Token(12)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(for)     Token(12)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(veces)   Token(13)       Valor(-)        Estado(-)
-Tipo(pclave)    Lexema(si)      Token(14)       Valor(-)        Estado(-)
-Tipo(pclave)    Lexema(sino)    Token(15)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(if)      Token(14)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(else)    Token(15)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(=)       Token(19)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(;)       Token(20)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(,)       Token(21)       Valor(-)        Estado(-)
@@ -179,10 +178,10 @@ Tipo(pclave)    Lexema(+)       Token(27)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(-)       Token(28)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(*)       Token(29)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(/)       Token(30)       Valor(-)        Estado(-)
-Tipo(pclave)    Lexema(##)      Token(0)        Valor(-)        Estado(-)
-Tipo(variable)  Lexema(led_rojo)        Token(31)       Valor(NULL)     Estado(NULL)
-Tipo(variable)  Lexema(led_amarillo)    Token(31)       Valor(NULL)     Estado(NULL)
-Tipo(variable)  Lexema(led_verde)       Token(31)       Valor(NULL)     Estado(NULL)
+Tipo(pclave)    Lexema(#)       Token(34)       Valor(-)        Estado(-)
+Tipo(variable)  Lexema(led_rojo)        Token(31)       Valor(-)        Estado(-)
+Tipo(variable)  Lexema(led_amarillo)    Token(31)       Valor(-)        Estado(-)
+Tipo(variable)  Lexema(led_verde)       Token(31)       Valor(-)        Estado(-)
 
 Iniciando analisis sintactico...
 
@@ -190,13 +189,13 @@ Iniciando analisis sintactico...
 Token #1: 34 (COMENTARIO)
 Transicion desde estado 0 con token 34
 Nuevo estado: 0
-Token #2: 1
+Token #2: 1 (KW_SETUP)
 Transicion desde estado 0 con token 1
 Nuevo estado: 1
 Token #3: 24
 Transicion desde estado 1 con token 24
 Nuevo estado: 2
-Token #4: 4
+Token #4: 4 (KW_PIN)
 Transicion desde estado 2 con token 4
 Nuevo estado: 3
 Token #5: 31 (VAR: led_rojo)
@@ -211,7 +210,7 @@ Nuevo estado: 6
 Token #8: 20
 Transicion desde estado 6 con token 20
 Nuevo estado: 2
-Token #9: 4
+Token #9: 4 (KW_PIN)
 Transicion desde estado 2 con token 4
 Nuevo estado: 3
 Token #10: 31 (VAR: led_amarillo)
@@ -226,7 +225,7 @@ Nuevo estado: 6
 Token #13: 20
 Transicion desde estado 6 con token 20
 Nuevo estado: 2
-Token #14: 4
+Token #14: 4 (KW_PIN)
 Transicion desde estado 2 con token 4
 Nuevo estado: 3
 Token #15: 31 (VAR: led_verde)
@@ -304,10 +303,10 @@ Nuevo estado: 13
 Token #39: 20
 Transicion desde estado 13 con token 20
 Nuevo estado: 2
-Token #40: 3
+Token #40: 3 (KW_END)
 Transicion desde estado 2 con token 3
 Nuevo estado: 10
-Token #41: 2
+Token #41: 2 (KW_LOOP)
 Transicion desde estado 10 con token 2
 Nuevo estado: 14
 Token #42: 24
@@ -493,7 +492,7 @@ Nuevo estado: 20
 Token #102: 20
 Transicion desde estado 20 con token 20
 Nuevo estado: 15
-Token #103: 3
+Token #103: 3 (KW_END)
 Transicion desde estado 15 con token 3
 Nuevo estado: 22
 Fin de archivo alcanzado
@@ -501,5 +500,3 @@ Fin de archivo alcanzado
 Estado final: 22
 
 Analisis Sintactico: EXITOSO
-
-Presione una tecla para continuar . . . 

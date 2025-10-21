@@ -120,7 +120,7 @@ class AnalizadorLexico{
                 else if(token==VAR){
                     Atributos attr;
                     if(!ts.Buscar(variable,attr)){
-                        ts.Insertar(variable,VAR,"variable",null,null);
+                        ts.Insertar(variable,VAR,"variable",vacio,vacio);
                         cout << "Variable reconocida: " << variable << endl;
                     }
                     else {

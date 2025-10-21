@@ -38,9 +38,9 @@ class AnalizadorSintactico{
                 if(token == KW_SETUP) cout << " (KW_SETUP)";
                 if(token == KW_LOOP) cout << " (KW_LOOP)";
                 if(token == KW_END) cout << " (KW_END)";
-                if(token == KW_INT) cout << " (KW_INT)";
+                if(token == KW_PIN) cout << " (KW_PIN)";
                 if(token == KW_FLOAT) cout << " (KW_FLOAT)";
-                if(token == KW_INT2) cout << " (KW_INT2)";
+                if(token == KW_INT) cout << " (KW_INT2)";
                 if(token == KW_FOR) cout << " (KW_FOR)";
                 if(token == KW_TIME) cout << " (KW_TIMES)";
                 if(token == KW_IF) cout << " (KW_IF)";

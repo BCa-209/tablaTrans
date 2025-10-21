@@ -6,9 +6,9 @@
 #define KW_SETUP        1
 #define KW_LOOP         2
 #define KW_END          3
-#define KW_INT          4
+#define KW_PIN          4
 #define KW_FLOAT        5
-#define KW_INT2         6
+#define KW_INT          6
 #define SALIDA          7
 #define CONFIGURAR      8
 #define ENCENDER        9

@@ -35,7 +35,7 @@ class AutomataSintactico{
             tTransicion[1][DOSPUNTOS]=2;
             
             // Estado 2: Dentro de configuración
-            tTransicion[2][KW_INT]=3;
+            tTransicion[2][KW_PIN]=3;
             tTransicion[2][CONFIGURAR]=7;
             tTransicion[2][KW_END]=10; // Fin de configuración
             

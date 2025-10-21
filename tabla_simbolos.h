@@ -118,9 +118,9 @@ class TablaSimbolos{
         Insertar("circuito", KW_LOOP, "pclave", vacio, vacio);
         Insertar("Circuito", KW_LOOP, "pclave", vacio, vacio);
         Insertar("fin", KW_END, "pclave", vacio, vacio);
-        Insertar("numpin", KW_INT, "pclave", vacio, vacio);
+        Insertar("numpin", KW_PIN, "pclave", vacio, vacio);
         Insertar("decimal", KW_FLOAT, "pclave", vacio, vacio);
-        Insertar("numero", KW_INT2, "pclave", vacio, vacio);
+        Insertar("numero", KW_INT, "pclave", vacio, vacio);
         Insertar("salida", SALIDA, "pclave", vacio, vacio);
         
         // Funciones
