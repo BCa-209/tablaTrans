@@ -1,37 +1,48 @@
-PS D:\Compiladores\Proyecto Arduino\tablaTrans\output> & .\'main.exe'
 === ANALIZADOR DE LENGUAJE PARA SISTEMAS EMBEBIDOS ===
-Archivo: semaforo.emb
-Archivo 'semaforo.emb' cargado exitosamente
-Contenido cargado (688 caracteres)
+Archivo: puerta.emb
+Archivo 'puerta.emb' cargado exitosamente
+Contenido cargado (783 caracteres)
 
 === CONTENIDO DEL ARCHIVO ===
 # ================================================
-# CONTROL DE TEMPERATURA CON VENTILADOR
-# Sistema de enfriamiento proporcional
+# PUERTA DE GARAGE AUTOMATICA
+# Parpadea 5 veces y hace pausa larga
 # ================================================
 
-configuracion:
-    numpin sensor_temperatura = A0;
-    numpin motor_ventilador = 9;
-    decimal temperatura_maxima = 30.0;
+incluir libreria "servo.h"
 
-    configurar(motor_ventilador, salida);
+configuracion:
+    numpin trigger = 9;
+    numpin echo = 10;
+    numpin servo_pin = 6;
+
+    configurar (trigger,salida);
+    configurar (echo,entrada);
+
+    decimal distancia_maxima = 20.0;
+
+    servo puerta;
+    conectar.puerta(servo_pin);
+    estado.puerta(0);
 fin
 
 circuito:
-    # Leer sensor de temperatura (LM35)
-    numero lectura = leer_sensor(sensor_temperatura);
-    decimal temperatura = lectura * 0.48828125;
+    apagar(trigger);
+    esperar(2);
+    encender(trigger);
+    esperar(10);
+    apagar(trigger);
+
+    numero duracion = pulso.echo;
+    numero distancia = duracion * 0.034/2;
 
     si:
-        temperatura > temperatura_maxima:
-        encender(motor_ventilador);
+        distancia < distancia_maxima:
+        estado.puerta(90);
     fin
     sino:
-        apagar(motor_ventilador);
+        estado.puerta(0);
     fin
-
-    esperar(1000);
 fin
 
 ===============================
@@ -42,74 +53,130 @@ Comentario reconocido y omitido
 Comentario reconocido y omitido
 Comentario reconocido y omitido
 Comentario reconocido y omitido
+Token reconocido: 35 (incluir)
+Token reconocido: 36 (libreria)
+Cadena reconocida: "servo.h"
 Token reconocido: 1 (configuracion)
 Token reconocido: 24 (:)
 Token reconocido: 4 (numpin)
-Variable reconocida: sensor_temperatura
-Token reconocido: 19 (=)
-Variable reconocida: A0
-Token reconocido: 20 (;)
-Token reconocido: 4 (numpin)
-Variable reconocida: motor_ventilador
+Token reconocido: 42 (trigger)
 Token reconocido: 19 (=)
 Numero reconocido: 9
 Token reconocido: 20 (;)
-Token reconocido: 5 (decimal)
-Variable reconocida: temperatura_maxima
+Token reconocido: 4 (numpin)
+Token reconocido: 43 (echo)
 Token reconocido: 19 (=)
-Numero reconocido: 30.0
+Numero reconocido: 10
+Token reconocido: 20 (;)
+Token reconocido: 4 (numpin)
+Variable reconocida: servo_pin
+Token reconocido: 19 (=)
+Numero reconocido: 6
 Token reconocido: 20 (;)
 Token reconocido: 8 (configurar)
 Token reconocido: 22 (()
-Palabra clave reconocida: motor_ventilador
+Token reconocido: 42 (trigger)
 Token reconocido: 21 (,)
 Token reconocido: 7 (salida)
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 8 (configurar)
+Token reconocido: 22 (()
+Token reconocido: 43 (echo)
+Token reconocido: 21 (,)
+Token reconocido: 37 (entrada)
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 5 (decimal)
+Variable reconocida: distancia_maxima
+Token reconocido: 19 (=)
+Numero reconocido: 20.0
+Token reconocido: 20 (;)
+Token reconocido: 38 (servo)
+Variable reconocida: puerta
+Token reconocido: 20 (;)
+Token reconocido: 39 (conectar)
+Token reconocido: 44 (.)
+Palabra clave reconocida: puerta
+Token reconocido: 22 (()
+Palabra clave reconocida: servo_pin
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 40 (estado)
+Token reconocido: 44 (.)
+Palabra clave reconocida: puerta
+Token reconocido: 22 (()
+Numero reconocido: 0
 Token reconocido: 23 ())
 Token reconocido: 20 (;)
 Token reconocido: 3 (fin)
 Token reconocido: 2 (circuito)
 Token reconocido: 24 (:)
-Comentario reconocido y omitido
-Token reconocido: 6 (numero)
-Variable reconocida: lectura
-Token reconocido: 19 (=)
-Token reconocido: 16 (leer_sensor)
-Token reconocido: 22 (()
-Palabra clave reconocida: sensor_temperatura
-Token reconocido: 23 ())
-Token reconocido: 20 (;)
-Token reconocido: 5 (decimal)
-Variable reconocida: temperatura
-Token reconocido: 19 (=)
-Palabra clave reconocida: lectura
-Token reconocido: 29 (*)
-Numero reconocido: 0.48828125
-Token reconocido: 20 (;)
-Variable reconocida: si
-Token reconocido: 24 (:)
-Palabra clave reconocida: temperatura
-Token reconocido: 25 (>)
-Palabra clave reconocida: temperatura_maxima
-Token reconocido: 24 (:)
-Token reconocido: 9 (encender)
-Token reconocido: 22 (()
-Palabra clave reconocida: motor_ventilador
-Token reconocido: 23 ())
-Token reconocido: 20 (;)
-Token reconocido: 3 (fin)
-Variable reconocida: sino
-Token reconocido: 24 (:)
 Token reconocido: 10 (apagar)
 Token reconocido: 22 (()
-Palabra clave reconocida: motor_ventilador
+Token reconocido: 42 (trigger)
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 11 (esperar)
+Token reconocido: 22 (()
+Numero reconocido: 2
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 9 (encender)
+Token reconocido: 22 (()
+Token reconocido: 42 (trigger)
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 11 (esperar)
+Token reconocido: 22 (()
+Numero reconocido: 10
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 10 (apagar)
+Token reconocido: 22 (()
+Token reconocido: 42 (trigger)
+Token reconocido: 23 ())
+Token reconocido: 20 (;)
+Token reconocido: 6 (numero)
+Variable reconocida: duracion
+Token reconocido: 19 (=)
+Token reconocido: 41 (pulso)
+Token reconocido: 44 (.)
+Token reconocido: 43 (echo)
+Token reconocido: 20 (;)
+Token reconocido: 6 (numero)
+Variable reconocida: distancia
+Token reconocido: 19 (=)
+Palabra clave reconocida: duracion
+Token reconocido: 29 (*)
+Numero reconocido: 0.034
+Token reconocido: 30 (/)
+Numero reconocido: 2
+Token reconocido: 20 (;)
+Token reconocido: 14 (si)
+Token reconocido: 24 (:)
+Palabra clave reconocida: distancia
+Token reconocido: 26 (<)
+Palabra clave reconocida: distancia_maxima
+Token reconocido: 24 (:)
+Token reconocido: 40 (estado)
+Token reconocido: 44 (.)
+Palabra clave reconocida: puerta
+Token reconocido: 22 (()
+Numero reconocido: 90
 Token reconocido: 23 ())
 Token reconocido: 20 (;)
 Token reconocido: 3 (fin)
-Token reconocido: 11 (esperar)
+Token reconocido: 15 (sino)
+Token reconocido: 24 (:)
+Token reconocido: 40 (estado)
+Token reconocido: 44 (.)
+Palabra clave reconocida: puerta
 Token reconocido: 22 (()
-Numero reconocido: 1000
+Numero reconocido: 0
 Token reconocido: 23 ())
 Token reconocido: 20 (;)
+Token reconocido: 3 (fin)
 Token reconocido: 3 (fin)
 Fin del archivo alcanzado
 
@@ -125,6 +192,17 @@ Tipo(pclave)    Lexema(numpin)  Token(4)        Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(decimal)         Token(5)        Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(numero)  Token(6)        Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(salida)  Token(7)        Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(entrada)         Token(37)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(si)      Token(14)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(sino)    Token(15)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(incluir)         Token(35)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(libreria)        Token(36)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(servo)   Token(38)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(conectar)        Token(39)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(estado)  Token(40)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(pulso)   Token(41)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(trigger)         Token(42)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(echo)    Token(43)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(configurar)      Token(8)        Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(configurar_pin)  Token(18)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(encender)        Token(9)        Valor(-)        Estado(-)
@@ -134,8 +212,6 @@ Tipo(pclave)    Lexema(leer_sensor)     Token(16)       Valor(-)        Estado(-
 Tipo(pclave)    Lexema(intensidad)      Token(17)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(for)     Token(12)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(veces)   Token(13)       Valor(-)        Estado(-)
-Tipo(pclave)    Lexema(if)      Token(14)       Valor(-)        Estado(-)
-Tipo(pclave)    Lexema(else)    Token(15)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(=)       Token(19)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(;)       Token(20)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(,)       Token(21)       Valor(-)        Estado(-)
@@ -148,15 +224,13 @@ Tipo(pclave)    Lexema(+)       Token(27)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(-)       Token(28)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(*)       Token(29)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(/)       Token(30)       Valor(-)        Estado(-)
+Tipo(pclave)    Lexema(.)       Token(44)       Valor(-)        Estado(-)
 Tipo(pclave)    Lexema(#)       Token(34)       Valor(-)        Estado(-)
-Tipo(variable)  Lexema(sensor_temperatura)      Token(31)       Valor(-)        Estado(-)
-Tipo(variable)  Lexema(A0)      Token(31)       Valor(-)        Estado(-)
-Tipo(variable)  Lexema(motor_ventilador)        Token(31)       Valor(-)        Estado(-)
-Tipo(variable)  Lexema(temperatura_maxima)      Token(31)       Valor(-)        Estado(-)
-Tipo(variable)  Lexema(lectura)         Token(31)       Valor(-)        Estado(-)
-Tipo(variable)  Lexema(temperatura)     Token(31)       Valor(-)        Estado(-)
-Tipo(variable)  Lexema(si)      Token(31)       Valor(-)        Estado(-)
-Tipo(variable)  Lexema(sino)    Token(31)       Valor(-)        Estado(-)
+Tipo(variable)  Lexema(servo_pin)       Token(31)       Valor(-)        Estado(-)
+Tipo(variable)  Lexema(distancia_maxima)        Token(31)       Valor(-)        Estado(-)
+Tipo(variable)  Lexema(puerta)  Token(31)       Valor(-)        Estado(-)
+Tipo(variable)  Lexema(duracion)        Token(31)       Valor(-)        Estado(-)
+Tipo(variable)  Lexema(distancia)       Token(31)       Valor(-)        Estado(-)
 
 Iniciando analisis sintactico...
 
@@ -167,26 +241,8 @@ Nuevo estado: 0
 Token #2: 34 (COMENTARIO)
 Transicion desde estado 0 con token 34
 Nuevo estado: 0
-Token #3: 34 (COMENTARIO)
-Transicion desde estado 0 con token 34
-Nuevo estado: 0
-Token #4: 34 (COMENTARIO)
-Transicion desde estado 0 con token 34
-Nuevo estado: 0
-Token #5: 1 (KW_SETUP)
-Transicion desde estado 0 con token 1
-Nuevo estado: 1
-Token #6: 24
-Transicion desde estado 1 con token 24
-Nuevo estado: 2
-Token #7: 4 (KW_PIN)
-Transicion desde estado 2 con token 4
-ERROR: No hay transicion desde estado 2 con token 4
-=== ERROR SINTACTICO ===
-Token actual: 4
-Estado actual: 2
-TokenCount: 7
-Error 400: Error de sintaxis en posicion -1
-Error en transicion desde estado 2 con token 4
+Fin de archivo alcanzado
+=== ANALISIS SINTACTICO EXITOSO ===
+Estado final: 0
 
-Analisis Sintactico: FALLIDO
+Analisis Sintactico: EXITOSO
