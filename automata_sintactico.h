@@ -33,80 +33,59 @@ class AutomataSintactico{
             tTransicion[0][KW_LOOP] = 4;
             tTransicion[0][FIN_ARCHIVO] = 23;
             
-            // INCLUIR LIBRERIA
-            tTransicion[50][LIBRERIA] = 51;
-            tTransicion[51][CADENA] = 52;        // "servo.h"
-            tTransicion[52][PCOMA] = 0;          // Volver al estado inicial
-            
-            // CONFIGURACIÓN (estados existentes expandidos)
-            tTransicion[1][DOSPUNTOS] = 2;
-            
-            // Estado 2: Dentro de configuración - EXPANDIDO
-            tTransicion[2][KW_PIN] = 3;
-            tTransicion[2][KW_FLOAT] = 3;
-            tTransicion[2][KW_INT] = 3;
-            tTransicion[2][CONFIGURAR] = 7;
-            tTransicion[2][SERVO] = 53;          // declaración servo
-            tTransicion[2][KW_END] = 10;
-            
-            // Declaración servo
-            tTransicion[53][VAR] = 54;
-            tTransicion[54][PCOMA] = 2;          // servo puerta;
-            
-            // Configurar pines - EXPANDIDO para ENTRADA
-            tTransicion[7][APARENTESIS] = 8;
-            tTransicion[8][NUM] = 9;
-            tTransicion[8][VAR] = 9;
-            tTransicion[9][COMA] = 11;
-            tTransicion[11][SALIDA] = 12;
-            tTransicion[11][ENTRADA] = 12;       // entrada también válida
-            tTransicion[12][CPARENTESIS] = 13;
-            tTransicion[13][PCOMA] = 2;
-            
-            // Llamadas a métodos con punto (conectar.puerta, estado.puerta)
-            tTransicion[2][CONECTAR] = 55;
-            tTransicion[2][ESTADO] = 55;
-            tTransicion[55][PUNTO] = 56;         // . (punto)
-            tTransicion[56][VAR] = 57;           // puerta
-            tTransicion[57][APARENTESIS] = 58;
-            tTransicion[58][NUM] = 59;
-            tTransicion[58][VAR] = 59;
-            tTransicion[59][CPARENTESIS] = 60;
-            tTransicion[60][PCOMA] = 2;
-            
-            // ... (estados existentes para circuito se mantienen)
-            
-            // Estado 15: Dentro de circuito - EXPANDIDO
-            tTransicion[15][ENCENDER] = 16;
-            tTransicion[15][APAGAR] = 16;
-            tTransicion[15][ESPERAR] = 19;
-            tTransicion[15][KW_INT] = 24;
-            tTransicion[15][KW_FLOAT] = 24;
-            tTransicion[15][KW_IF] = 27;
-            tTransicion[15][PULSO] = 61;         // pulso.echo
-            tTransicion[15][ESTADO] = 55;        // estado.puerta en circuito
-            tTransicion[15][KW_END] = 22;
-            
-            // pulso.echo
-            tTransicion[61][PUNTO] = 62;
-            tTransicion[62][ECHO] = 63;
-            tTransicion[63][PCOMA] = 15;
-            
-            // Expresiones aritméticas más complejas
-            tTransicion[20][POR] = 31;
-            tTransicion[20][MAS] = 31;
-            tTransicion[20][MENOS] = 31;
-            tTransicion[20][DIVIDIDO] = 31;
-            tTransicion[31][NUM] = 20;
-            tTransicion[31][VAR] = 20;
-            
-            // Estados finales aceptables (expandir)
-            tTransicion[22][FIN_ARCHIVO] = 23;
-            tTransicion[0][FIN_ARCHIVO] = 23;
-            tTransicion[10][FIN_ARCHIVO] = 23;
-            tTransicion[15][FIN_ARCHIVO] = 23;
-            tTransicion[37][FIN_ARCHIVO] = 23;
-            tTransicion[40][FIN_ARCHIVO] = 23;
+            // INCLUIR LIBRERIA - CORREGIDO
+    tTransicion[50][LIBRERIA] = 51;
+    tTransicion[51][CADENA] = 52;        // "servo.h"
+    tTransicion[52][PCOMA] = 0;          // Volver al estado inicial
+    
+    // Declaraciones con asignación
+    tTransicion[3][VAR] = 70;
+    tTransicion[70][IGUAL] = 71;
+    tTransicion[71][NUM] = 72;
+    tTransicion[72][PCOMA] = 2;
+    
+    // Declaración decimal con asignación
+    tTransicion[2][KW_FLOAT] = 73;
+    tTransicion[73][VAR] = 74;
+    tTransicion[74][IGUAL] = 75;
+    tTransicion[75][NUM] = 76;
+    tTransicion[76][PCOMA] = 2;
+    
+    // Estructura SI-SINO expandida
+    tTransicion[15][KW_IF] = 27;
+    tTransicion[27][DOSPUNTOS] = 28;
+    tTransicion[28][VAR] = 29;
+    tTransicion[29][MENOR] = 30;
+    tTransicion[29][MAYOR] = 30;
+    tTransicion[30][VAR] = 31;
+    tTransicion[30][NUM] = 31;
+    tTransicion[31][DOSPUNTOS] = 32;
+    tTransicion[32][ESTADO] = 33;
+    tTransicion[33][PUNTO] = 34;
+    tTransicion[34][VAR] = 35;
+    tTransicion[35][APARENTESIS] = 36;
+    tTransicion[36][NUM] = 37;
+    tTransicion[36][VAR] = 37;
+    tTransicion[37][CPARENTESIS] = 38;
+    tTransicion[38][PCOMA] = 39;
+    tTransicion[39][KW_END] = 40;
+    tTransicion[40][KW_ELSE] = 41;
+    tTransicion[41][DOSPUNTOS] = 42;
+    tTransicion[42][ESTADO] = 43;
+    tTransicion[43][PUNTO] = 44;
+    tTransicion[44][VAR] = 45;
+    tTransicion[45][APARENTESIS] = 46;
+    tTransicion[46][NUM] = 47;
+    tTransicion[46][VAR] = 47;
+    tTransicion[47][CPARENTESIS] = 48;
+    tTransicion[48][PCOMA] = 49;
+    tTransicion[49][KW_END] = 15;
+    
+    // Estados finales adicionales
+    tTransicion[52][FIN_ARCHIVO] = 23;
+    tTransicion[72][FIN_ARCHIVO] = 23;
+    tTransicion[76][FIN_ARCHIVO] = 23;
+    tTransicion[49][FIN_ARCHIVO] = 23;
         }
         
         int transicion(int token){
@@ -124,7 +103,8 @@ class AutomataSintactico{
         bool esEstadoFinal(){
             // Estados finales aceptables (expandidos)
             return estado == 22 || estado == 23 || estado == 10 || estado == 15 || 
-                estado == 37 || estado == 40 || estado == 0;
+                estado == 37 || estado == 40 || estado == 0 || estado == 52 ||
+                estado == 72 || estado == 76 || estado == 49;
         }
         
         void reiniciar(){

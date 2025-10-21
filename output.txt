@@ -1,23 +1,22 @@
 === ANALIZADOR DE LENGUAJE PARA SISTEMAS EMBEBIDOS ===
-Archivo: puerta.emb
+Archivo: puertaS.emb
+No se pudo abrir el archivo puerta.emb
+Creando archivo puertaS.emb...
 Archivo 'puerta.emb' cargado exitosamente
-Contenido cargado (783 caracteres)
+Contenido cargado (654 caracteres)
 
 === CONTENIDO DEL ARCHIVO ===
-# ================================================
-# PUERTA DE GARAGE AUTOMATICA
-# Parpadea 5 veces y hace pausa larga
-# ================================================
+# PUERTA DE GARAGE AUTOMATICA (comentario)
 
-incluir libreria "servo.h"
+incluir libreria "servo.h";
 
 configuracion:
     numpin trigger = 9;
     numpin echo = 10;
     numpin servo_pin = 6;
 
-    configurar (trigger,salida);
-    configurar (echo,entrada);
+    configurar(trigger,salida);
+    configurar(echo,entrada);
 
     decimal distancia_maxima = 20.0;
 
@@ -44,18 +43,15 @@ circuito:
         estado.puerta(0);
     fin
 fin
-
 ===============================
 
 Iniciando analisis lexico...
 === ANALISIS LEXICO ===
 Comentario reconocido y omitido
-Comentario reconocido y omitido
-Comentario reconocido y omitido
-Comentario reconocido y omitido
 Token reconocido: 35 (incluir)
 Token reconocido: 36 (libreria)
 Cadena reconocida: "servo.h"
+Token reconocido: 20 (;)
 Token reconocido: 1 (configuracion)
 Token reconocido: 24 (:)
 Token reconocido: 4 (numpin)
@@ -238,11 +234,29 @@ Iniciando analisis sintactico...
 Token #1: 34 (COMENTARIO)
 Transicion desde estado 0 con token 34
 Nuevo estado: 0
-Token #2: 34 (COMENTARIO)
-Transicion desde estado 0 con token 34
+Token #2: 35
+Transicion desde estado 0 con token 35
+Nuevo estado: 50
+Token #3: 36
+Transicion desde estado 50 con token 36
+Nuevo estado: 51
+Token #4: 33
+Transicion desde estado 51 con token 33
+Nuevo estado: 52
+Token #5: 20
+Transicion desde estado 52 con token 20
 Nuevo estado: 0
-Fin de archivo alcanzado
-=== ANALISIS SINTACTICO EXITOSO ===
-Estado final: 0
+Token #6: 1 (KW_SETUP)
+Transicion desde estado 0 con token 1
+Nuevo estado: 1
+Token #7: 24
+Transicion desde estado 1 con token 24
+ERROR: No hay transicion desde estado 1 con token 24
+=== ERROR SINTACTICO ===
+Token actual: 24
+Estado actual: 1
+TokenCount: 7
+Error 400: Error de sintaxis en posicion -1
+Error en transicion desde estado 1 con token 24
 
-Analisis Sintactico: EXITOSO
+Analisis Sintactico: FALLIDO

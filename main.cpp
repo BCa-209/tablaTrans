@@ -10,26 +10,21 @@
 using namespace std;
 
 bool crearArchivoPuerta(){
-    ofstream archivo("puerta.emb");
+    ofstream archivo("puertaS.emb");
     if (!archivo.is_open()){
-        cout << "Error: No se pudo crear el archivo puerta.emb" << endl;
+        cout << "Error: No se pudo crear el archivo puertaS.emb" << endl;
         return false;
     }
-    
-    archivo << "# ================================================\n";
-    archivo << "# PUERTA DE GARAGE AUTOMATICA\n";
-    archivo << "# Parpadea 5 veces y hace pausa larga\n";
-    archivo << "# ================================================\n\n";
-    
-    archivo << "incluir libreria \"servo.h\"\n\n";
+    archivo << "# PUERTA DE GARAGE AUTOMATICA (comentario)\n\n";
+    archivo << "incluir libreria \"servo.h\";\n\n";
     
     archivo << "configuracion:\n";
     archivo << "    numpin trigger = 9;\n";
     archivo << "    numpin echo = 10;\n";
     archivo << "    numpin servo_pin = 6;\n\n";
     
-    archivo << "    configurar (trigger,salida);\n";
-    archivo << "    configurar (echo,entrada);\n\n";
+    archivo << "    configurar(trigger,salida);\n";
+    archivo << "    configurar(echo,entrada);\n\n";
     
     archivo << "    decimal distancia_maxima = 20.0;\n\n";
     
@@ -58,27 +53,11 @@ bool crearArchivoPuerta(){
     archivo << "fin";
     
     archivo.close();
-    
-    // Verificar que se escribió correctamente
-    ifstream verificar("puerta.emb");
-    if (!verificar.is_open()) {
-        cout << "Error: No se pudo verificar el archivo creado" << endl;
-        return false;
-    }
-    
-    string linea;
-    int lineCount = 0;
-    while (getline(verificar, linea)) {
-        lineCount++;
-    }
-    verificar.close();
-    
-    cout << "Archivo 'puerta.emb' creado automaticamente con " << lineCount << " lineas" << endl;
-    return lineCount > 0;
+    return true;
 }
 
 bool leerArchivoPuerta(char buffer[]){
-    ifstream archivo("puerta.emb");
+    ifstream archivo("puertaS.emb");
     if (!archivo.is_open()){
         cout << "No se pudo abrir el archivo puerta.emb" << endl;
         return false;
@@ -93,10 +72,10 @@ int main(){
     char codigo[10000];
     
     cout << "=== ANALIZADOR DE LENGUAJE PARA SISTEMAS EMBEBIDOS ===" << endl;
-    cout << "Archivo: puerta.emb" << endl;
+    cout << "Archivo: puertaS.emb" << endl;
     
     if(!leerArchivoPuerta(codigo)){
-        cout << "Creando archivo puerta.emb..." << endl;
+        cout << "Creando archivo puertaS.emb..." << endl;
         if(!crearArchivoPuerta()){
             return 1;
         }
