@@ -15,9 +15,7 @@ circuito:
     numero lectura = leer_sensor(sensor_temperatura);
     decimal temperatura = lectura * 0.48828125;
     
-    si:
-	temperatura > temperatura_maxima:
-       
+    si (temperatura > temperatura_maxima):
         encender(motor_ventilador);
     fin
         
