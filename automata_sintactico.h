@@ -27,17 +27,17 @@ class AutomataSintactico{
             // ========== GRAMÁTICA SIMPLIFICADA ==========
             
             // Estado 0: Inicio - aceptar CONFIGURACION y saltar comentarios
-            tTransicion[0][CONFIGURACION]=1;
+            tTransicion[0][KW_SETUP]=1;
             tTransicion[0][COMENTARIO]=0;    // Saltar comentarios
-            tTransicion[0][CIRCUITO]=4;      // Algunos archivos pueden empezar directo con circuito
+            tTransicion[0][KW_LOOP]=4;      // Algunos archivos pueden empezar directo con circuito
             
             // CONFIGURACIÓN
             tTransicion[1][DOSPUNTOS]=2;
             
             // Estado 2: Dentro de configuración
-            tTransicion[2][NUMPIN]=3;
+            tTransicion[2][KW_INT]=3;
             tTransicion[2][CONFIGURAR]=7;
-            tTransicion[2][FIN]=10; // Fin de configuración
+            tTransicion[2][KW_END]=10; // Fin de configuración
             
             // Declaración numpin
             tTransicion[3][VAR]=4;
@@ -55,14 +55,14 @@ class AutomataSintactico{
             tTransicion[13][PCOMA]=2; // Volver a configuración
             
             // CIRCUITO después de fin de configuración
-            tTransicion[10][CIRCUITO]=14;
+            tTransicion[10][KW_LOOP]=14;
             tTransicion[14][DOSPUNTOS]=15;
             
             // Estado 15: Dentro de circuito
             tTransicion[15][ENCENDER]=16;
             tTransicion[15][APAGAR]=16;
             tTransicion[15][ESPERAR]=19;
-            tTransicion[15][FIN]=22; // Fin de circuito - ESTADO FINAL
+            tTransicion[15][KW_END]=22; // Fin de circuito - ESTADO FINAL
             
             // Instrucciones encender/apagar
             tTransicion[16][APARENTESIS]=17;

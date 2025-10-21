@@ -2,22 +2,22 @@
 #define TOKENS_H
 
 // Enumeración de tokens para el lenguaje de sistemas embebidos
-#define ALGORITMO       0
-#define CONFIGURACION   1
-#define CIRCUITO        2
-#define FIN             3
-#define NUMPIN          4
-#define DECIMAL         5
-#define NUMERO          6
+//#define ALGORITMO       0
+#define KW_SETUP        1
+#define KW_LOOP         2
+#define KW_END          3
+#define KW_INT          4
+#define KW_FLOAT        5
+#define KW_INT2         6
 #define SALIDA          7
 #define CONFIGURAR      8
 #define ENCENDER        9
 #define APAGAR          10
 #define ESPERAR         11
-#define REPETIR         12
-#define VECES           13
-#define SI              14
-#define SINO            15
+#define KW_FOR          12
+#define KW_TIME         13
+#define KW_IF           14
+#define KW_ELSE         15
 #define LEER_SENSOR     16
 #define INTENSIDAD      17
 #define CONFIGURAR_PIN  18

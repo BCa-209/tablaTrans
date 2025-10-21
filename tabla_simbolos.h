@@ -112,15 +112,15 @@ class TablaSimbolos{
         
     void InicializarPalabrasClave(){
     // Palabras reservadas principales
-        Insertar("algoritmo", ALGORITMO, "pclave", vacio, vacio);
-        Insertar("configuracion", CONFIGURACION, "pclave", vacio, vacio);
-        Insertar("Configuracion", CONFIGURACION, "pclave", vacio, vacio);
-        Insertar("circuito", CIRCUITO, "pclave", vacio, vacio);
-        Insertar("Circuito", CIRCUITO, "pclave", vacio, vacio);
-        Insertar("fin", FIN, "pclave", vacio, vacio);
-        Insertar("numpin", NUMPIN, "pclave", vacio, vacio);
-        Insertar("decimal", DECIMAL, "pclave", vacio, vacio);
-        Insertar("numero", NUMERO, "pclave", vacio, vacio);
+        //Insertar("algoritmo", ALGORITMO, "pclave", vacio, vacio);
+        Insertar("configuracion", KW_SETUP, "pclave", vacio, vacio);
+        Insertar("Configuracion", KW_SETUP, "pclave", vacio, vacio);
+        Insertar("circuito", KW_LOOP, "pclave", vacio, vacio);
+        Insertar("Circuito", KW_LOOP, "pclave", vacio, vacio);
+        Insertar("fin", KW_END, "pclave", vacio, vacio);
+        Insertar("numpin", KW_INT, "pclave", vacio, vacio);
+        Insertar("decimal", KW_FLOAT, "pclave", vacio, vacio);
+        Insertar("numero", KW_INT2, "pclave", vacio, vacio);
         Insertar("salida", SALIDA, "pclave", vacio, vacio);
         
         // Funciones
@@ -133,10 +133,10 @@ class TablaSimbolos{
         Insertar("intensidad", INTENSIDAD, "pclave", vacio, vacio);
         
         // Estructuras de control
-        Insertar("repetir", REPETIR, "pclave", vacio, vacio);
-        Insertar("veces", VECES, "pclave", vacio, vacio);
-        Insertar("si", SI, "pclave", vacio, vacio);
-        Insertar("sino", SINO, "pclave", vacio, vacio);
+        Insertar("for", KW_FOR, "pclave", vacio, vacio);
+        Insertar("veces", KW_TIME, "pclave", vacio, vacio);
+        Insertar("if", KW_IF, "pclave", vacio, vacio);
+        Insertar("else", KW_ELSE, "pclave", vacio, vacio);
         
         // Delimitadores y operadores
         Insertar("=", IGUAL, "pclave", vacio, vacio);
@@ -153,7 +153,7 @@ class TablaSimbolos{
         Insertar("/", DIVIDIDO, "pclave", vacio, vacio);
         
         // Encabezado de algoritmo
-        Insertar("##", ALGORITMO, "pclave", vacio, vacio);
+        Insertar("#", COMENTARIO, "pclave", vacio, vacio);
     }
 };
 
