@@ -1,8 +1,5 @@
 
-# ================================================
 # CONTROL DE TEMPERATURA CON VENTILADOR
-# Sistema de enfriamiento proporcional
-# ================================================
 
 configuracion:
     numpin sensor_temperatura = A0;

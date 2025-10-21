@@ -1,4 +1,3 @@
-PS D:\Compiladores\Proyecto Arduino\tablaTrans\output> & .\'main.exe'
 === ANALIZADOR DE LENGUAJE PARA SISTEMAS EMBEBIDOS ===
 Archivo: semaforo.emb
 Archivo 'semaforo.emb' cargado exitosamente
@@ -14,7 +13,7 @@ configuracion:
     numpin sensor_temperatura = A0;
     numpin motor_ventilador = 9;
     decimal temperatura_maxima = 30.0;
-
+    
     configurar(motor_ventilador, salida);
 fin
 
@@ -167,26 +166,8 @@ Nuevo estado: 0
 Token #2: 34 (COMENTARIO)
 Transicion desde estado 0 con token 34
 Nuevo estado: 0
-Token #3: 34 (COMENTARIO)
-Transicion desde estado 0 con token 34
-Nuevo estado: 0
-Token #4: 34 (COMENTARIO)
-Transicion desde estado 0 con token 34
-Nuevo estado: 0
-Token #5: 1 (KW_SETUP)
-Transicion desde estado 0 con token 1
-Nuevo estado: 1
-Token #6: 24
-Transicion desde estado 1 con token 24
-Nuevo estado: 2
-Token #7: 4 (KW_PIN)
-Transicion desde estado 2 con token 4
-ERROR: No hay transicion desde estado 2 con token 4
-=== ERROR SINTACTICO ===
-Token actual: 4
-Estado actual: 2
-TokenCount: 7
-Error 400: Error de sintaxis en posicion -1
-Error en transicion desde estado 2 con token 4
+Fin de archivo alcanzado
+=== ANALISIS SINTACTICO EXITOSO ===
+Estado final: 0
 
-Analisis Sintactico: FALLIDO
+Analisis Sintactico: EXITOSO
