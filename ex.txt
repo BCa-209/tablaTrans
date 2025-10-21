@@ -1,0 +1,99 @@
+EJEMPLOS
+
+BASICO:
+## ALGORITMO 1: SEMÁFORO INTELIGENTE
+
+
+configuracion:
+    numpin led_rojo = 13;
+    numpin led_amarillo = 12;
+    numpin led_verde = 11;
+    
+    configurar (13, salida);
+    configurar (12, salida);
+    configurar (11, salida);
+fin
+
+circuito:
+    
+    encender(led_rojo); 
+    esperar(5000);
+    apagar(led_verde);
+    
+    encender(12);
+    esperar(2000);
+    apagar(12);
+    
+    encender(13);
+    esperar(5000);
+    apagar(13);
+    
+    encender(12);
+    esperar(1000);
+    apagar(12);
+fin
+
+
+INTERMEDIO: 
+
+## ALGORITMO 3: CONTROL DE TEMPERATURA CON VENTILADOR
+
+
+Configuracion:
+
+    numpin sensor_temperatura = 0
+    numpin motor_ventilador = 9
+    decimal temperatura_maxima = 30.0
+    
+    configurar_pin(motor_ventilador, salida)
+fin
+
+repetir:
+    # Leer sensor de temperatura (LM35)
+    numero lectura = leer_sensor(sensor_temp)
+    decimal temperatura = lectura * 0.48828125
+    
+    si temperatura > temperatura_maxima:
+        # Calcular velocidad proporcional
+        decimal exceso = temperatura - temperatura_maxima
+        numero velocidad = exceso * 25
+        
+        si velocidad > 255:
+            velocidad = 255
+        fin
+        
+        intensidad(motor_ventilador, velocidad)
+    sino:
+        apagar(motor_ventilador)
+    fin
+    
+    esperar(1000)
+fin
+
+
+
+AVANZADO:
+
+# ================================
+# LED PARPADEANTE 5 VECES
+# ================================
+
+Configuracion:
+    numpin led = 13;
+    
+    configurar(13, salida);
+fin
+
+
+Circuito:
+    # El LED parpadea 5 veces
+    repetir 5 veces:
+        encender(led);
+        esperar(500);
+        apagar(led);
+        esperar(500);
+    fin
+    
+    # Pausa de 2 segundos antes de repetir
+    esperar(2000);
+fin

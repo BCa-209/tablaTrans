@@ -5,24 +5,26 @@
 #include "gestor_errores.h"
 #include <cctype>
 #include <cstring>
+#include <iostream>
+using namespace std;
 
 class AnalizadorLexico{
     private:
         int i;
         char cad[1000];
-        std::string numero;
-        std::string variable;
-        std::string cadena;
+        string numero;
+        string variable;
+        string cadena;
         TablaSimbolos& ts;
         
     public:
-        AnalizadorLexico(char input[100], TablaSimbolos& tabla) : ts(tabla){
+        AnalizadorLexico(char input[1000], TablaSimbolos& tabla) : ts(tabla){
             strcpy(cad,input);
             i=0;
         }
         
         bool iselement(char c){
-            char elements[] = "(){}=,;.'";
+            char elements[] = "(){}=,;.'\":><+-*/";  // Añadido . y "
             for(int j=0; elements[j]!='\0'; j++){
                 if(elements[j]==c)
                     return true;
@@ -36,13 +38,44 @@ class AnalizadorLexico{
             }
             
             if(cad[i]=='\0'){
-                return FIN;
+                return FIN_ARCHIVO;
             }
             
-            if(isalpha(cad[i])){
+            // Reconocer comentarios CORREGIDO
+            if(cad[i]=='#'){
+                // ES UN COMENTARIO - consumir hasta el final de línea
+                while(cad[i]!='\n' && cad[i]!='\0'){
+                    i++;
+                }
+                return COMENTARIO;
+            }
+
+            // NUEVO: Reconocer cadenas entre comillas
+            if(cad[i]=='\"'){
                 char tmp[100];
                 int tmp_cont=0;
-                while(isalpha(cad[i]) || isdigit(cad[i])){
+                i++; // Saltar la comilla inicial
+                
+                while(cad[i]!='\"' && cad[i]!='\0'){
+                    tmp[tmp_cont]=cad[i];
+                    tmp_cont++;
+                    i++;
+                }
+                
+                if(cad[i]=='\"'){
+                    i++; // Saltar la comilla final
+                }
+                
+                tmp[tmp_cont]='\0';
+                cadena=tmp;
+                return CADENA;
+            }
+            
+            // Reconocer identificadores y palabras clave
+            if(isalpha(cad[i]) || cad[i]=='_'){
+                char tmp[100];
+                int tmp_cont=0;
+                while(isalpha(cad[i]) || isdigit(cad[i]) || cad[i]=='_'){
                     tmp[tmp_cont]=cad[i];
                     tmp_cont++;
                     i++;
@@ -57,10 +90,16 @@ class AnalizadorLexico{
                 return VAR;
             }
             
+            // Reconocer números (enteros y decimales)
             if(isdigit(cad[i])){
                 char tmp[100];
                 int tmp_cont=0;
+                bool tienePunto = false;
                 while(isdigit(cad[i]) || cad[i]=='.'){
+                    if(cad[i]=='.') {
+                        if(tienePunto) break; // Solo un punto permitido
+                        tienePunto = true;
+                    }
                     tmp[tmp_cont]=cad[i];
                     tmp_cont++;
                     i++;
@@ -70,6 +109,7 @@ class AnalizadorLexico{
                 return NUM;
             }
             
+            // Reconocer delimitadores y operadores
             if(iselement(cad[i])){
                 char tmp[2];
                 tmp[0]=cad[i];
@@ -84,20 +124,6 @@ class AnalizadorLexico{
                 return ERROR_TOKEN;
             }
             
-            if(cad[i]=='\''){
-                char tmp[100];
-                int tmp_cont=0;
-                i++;
-                while(cad[i]!='\'' && cad[i]!='\0'){
-                    tmp[tmp_cont++]=cad[i];
-                    i++;
-                }
-                tmp[tmp_cont]='\0';
-                cadena=tmp;
-                if(cad[i]=='\'') i++;
-                return CADENA;
-            }
-            
             i++;
             return ERROR_TOKEN;
         }
@@ -105,23 +131,46 @@ class AnalizadorLexico{
         bool analizar(){
             i=0;
             int token=0;
-            std::cout << "=== ANALISIS LEXICO ===" << std::endl;
+            cout << "=== ANALISIS LEXICO ===" << endl;
             while(true){
                 token=getToken();
-                if(token==FIN){
-                    std::cout << "Fin del archivo alcanzado" << std::endl;
+                if(token==FIN_ARCHIVO){
+                    cout << "Fin del archivo alcanzado" << endl;
                     return true;
                 }
                 else if(token==VAR){
                     Atributos attr;
                     if(!ts.Buscar(variable,attr)){
-                        ts.Insertar(variable,VAR,"var",null,null);
-                        std::cout << "Variable reconocida: " << variable << std::endl;
+                        ts.Insertar(variable,VAR,"variable",vacio,vacio);
+                        cout << "Variable reconocida: " << variable << endl;
                     }
+                    else {
+                        cout << "Palabra clave reconocida: " << variable << endl;
+                    }
+                }
+                else if(token==NUM){
+                    cout << "Numero reconocido: " << numero << endl;
+                }
+                else if(token==CADENA){  // NUEVO: Manejar cadenas
+                    cout << "Cadena reconocida: \"" << cadena << "\"" << endl;
+                }
+                else if(token==COMENTARIO){
+                    cout << "Comentario reconocido y omitido" << endl;
                 }
                 else if(token==ERROR_TOKEN){
                     GestorErrores::Error(100, i);
                     return false;
+                }
+                else {
+                    // Mostrar token reconocido
+                    Atributos attr;
+                    // Buscar en tabla de símbolos para obtener el nombre
+                    for(auto item : ts.getTabla()){
+                        if(item.token == token && item.tipo == "pclave"){
+                            cout << "Token reconocido: " << token << " (" << item.lexema << ")" << endl;
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -129,6 +178,11 @@ class AnalizadorLexico{
         void reiniciar(){
             i=0;
         }
+        
+        // Métodos para obtener valores
+        string getVariable() { return variable; }
+        string getNumero() { return numero; }
+        string getCadena() { return cadena; }
 };
 
 #endif
